@@ -10,7 +10,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <!-- font awesome  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Home</title>
 </head>
@@ -19,7 +18,6 @@
 
   <!-- NavBar -->
   <div class="max-w-lg mx-auto bg-white rounded-b-lg p-3">
-
     <div class="flex justify-between items-center border-b border-gray-400 p-3">
       <div class="flex">
         <img src="./assets/Group.png" alt="" class="h-[50px]">
@@ -28,7 +26,6 @@
           <p class="text-[#080808]">Remaining Balance</p>
         </div>
       </div>
-
       <div>
         <button class="btn bg-[#d8e1f5]"><i class="fa-solid fa-right-from-bracket rotate-180"></i> Log Out</button>
       </div>
@@ -69,16 +66,23 @@
         <h2 class="mt-2 font-medium">Transactions</h2>
       </div>
     </div>
-
   </div>
 
   <!-- Forms Section -->
   <div class="all-form-section max-w-lg mx-auto mt-6">
 
+    <!-- Transactions (always visible by default) -->
+    <div id="transaction-parent" class="">
+      <h1 class="my-5 font-bold">Transaction History</h1>
+      <div class="bg-white rounded-2xl p-8 space-y-3" id="transaction-list">
+        <p class="text-gray-500">No transactions yet.</p>
+      </div>
+    </div>
+
     <!-- Add Money -->
     <div id="add-money-parent" class="hidden">
       <h1 class="m-5 font-bold">Add Money</h1>
-      <form action="" class="bg-white rounded-2xl p-8">
+      <form class="bg-white rounded-2xl p-8">
         <h1>Select A bank</h1>
         <select id="bank" class="select select-info bg-[#F4F5F7] mt-3 rounded-4xl w-full">
           <option disabled selected>Select A Bank</option>
@@ -111,7 +115,7 @@
     <!-- Cashout -->
     <div id="cash-out-parent" class="hidden">
       <h1 class="my-5 font-bold">Cash Out</h1>
-      <form action="" class="bg-white rounded-2xl p-8">
+      <form class="bg-white rounded-2xl p-8">
         <div class="mt-3">
           <label for="cashout-account">Agent Number</label>
           <input type="text" placeholder="Enter 11 digit account number" id="cashout-account"
@@ -135,7 +139,7 @@
     <!-- Transfer -->
     <div id="transfer-parent" class="hidden">
       <h1 class="my-5 font-bold">Transfer Money</h1>
-      <form action="" class="bg-white rounded-2xl p-8">
+      <form class="bg-white rounded-2xl p-8">
         <div class="mt-3">
           <label for="transfer-account">Receiver Number</label>
           <input type="text" placeholder="Enter 11 digit number" id="transfer-account"
@@ -169,7 +173,7 @@
     <!-- Pay Bill -->
     <div id="bill-parent" class="hidden">
       <h1 class="my-5 font-bold">Pay Bill</h1>
-      <form action="" class="bg-white rounded-2xl p-8">
+      <form class="bg-white rounded-2xl p-8">
         <div class="mt-3">
           <label for="bill-type">Bill Type</label>
           <select id="bill-type" class="select select-info bg-[#F4F5F7] mt-3 w-full">
@@ -195,36 +199,9 @@
       </form>
     </div>
 
-    <!-- Transactions (Default Visible) -->
-    <div id="transaction-parent">
-      <h1 class="my-5 font-bold">Transaction History</h1>
-      <div class="bg-white rounded-2xl p-8">
-        <ul id="transaction-list" class="list-disc pl-5 space-y-2">
-          <!-- JS will append li items -->
-        </ul>
-      </div>
-    </div>
-
   </div>
 
-  <script>
-    const sections = document.querySelectorAll(".all-form-section > div");
-
-    function showSection(sectionId) {
-      sections.forEach(sec => {
-        sec.classList.add("hidden");
-      });
-      document.getElementById(sectionId).classList.remove("hidden");
-    }
-
-    document.getElementById("add-money-button").addEventListener("click", () => showSection("add-money-parent"));
-    document.getElementById("cash-out-button").addEventListener("click", () => showSection("cash-out-parent"));
-    document.getElementById("transfer-button").addEventListener("click", () => showSection("transfer-parent"));
-    document.getElementById("bonus-button").addEventListener("click", () => showSection("bonus-parent"));
-    document.getElementById("bill-button").addEventListener("click", () => showSection("bill-parent"));
-    document.getElementById("transaction-button").addEventListener("click", () => showSection("transaction-parent"));
-  </script>
-
+  <script src="home.js"></script>
 </body>
 
 </html>
