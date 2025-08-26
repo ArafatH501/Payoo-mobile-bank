@@ -74,7 +74,7 @@
 
   <!-- Forms Section -->
   <div class="all-form-section max-w-lg mx-auto mt-6">
-    
+
     <!-- Add Money -->
     <div id="add-money-parent" class="hidden">
       <h1 class="m-5 font-bold">Add Money</h1>
@@ -195,8 +195,8 @@
       </form>
     </div>
 
-    <!-- Transactions -->
-    <div id="transaction-parent" class="hidden">
+    <!-- Transactions (Default Visible) -->
+    <div id="transaction-parent">
       <h1 class="my-5 font-bold">Transaction History</h1>
       <div class="bg-white rounded-2xl p-8">
         <ul id="transaction-list" class="list-disc pl-5 space-y-2">
@@ -207,7 +207,24 @@
 
   </div>
 
-  <script src="home.js"></script>
+  <script>
+    const sections = document.querySelectorAll(".all-form-section > div");
+
+    function showSection(sectionId) {
+      sections.forEach(sec => {
+        sec.classList.add("hidden");
+      });
+      document.getElementById(sectionId).classList.remove("hidden");
+    }
+
+    document.getElementById("add-money-button").addEventListener("click", () => showSection("add-money-parent"));
+    document.getElementById("cash-out-button").addEventListener("click", () => showSection("cash-out-parent"));
+    document.getElementById("transfer-button").addEventListener("click", () => showSection("transfer-parent"));
+    document.getElementById("bonus-button").addEventListener("click", () => showSection("bonus-parent"));
+    document.getElementById("bill-button").addEventListener("click", () => showSection("bill-parent"));
+    document.getElementById("transaction-button").addEventListener("click", () => showSection("transaction-parent"));
+  </script>
+
 </body>
 
 </html>
